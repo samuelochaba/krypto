@@ -98,6 +98,13 @@ body {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
+@media screen and (min-width: 750px) and (max-width: 900px) {
+  .services-section {
+    /* background-color: red; */
+    display: flex;
+    flex-direction: column !important;
+  }
+}
 
 @tailwind base;
 @tailwind components;

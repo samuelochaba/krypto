@@ -7,7 +7,6 @@ export const TransactionContext = React.createContext();
 const { ethereum } = window;
 
 const getEtheriumContract = () => {
-  console.log("hello");
   const provider = new ethers.providers.Web3Provider(ethereum);
   const signer = provider.getSigner();
   const transactionContract = new ethers.Contract(
@@ -139,7 +138,7 @@ export const TransactionProvider = ({ children }) => {
       );
 
       setIsLoading(true);
-      console.log(`loading - ${transactionHash.hash}`);
+
       await transactionHash.wait();
 
       setIsLoading(false);
@@ -147,6 +146,7 @@ export const TransactionProvider = ({ children }) => {
 
       const transactionCount = await transactionContract.getTransactionCount();
       setTransactionCount(transactionCount.toNumber());
+      window.reload();
     } catch (err) {
       console.log(err);
       throw new Error("No ethereum object.");
